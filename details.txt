@@ -18,9 +18,9 @@ admin Login :
 Email : superadmin@admin.com
 Pass : admin@1234
 
-=================================================================================
+========================================================
 Manual Domain Configuration for testing multitenancy
-=================================================================================
+========================================================
 #Edit D:\xampp\apache\conf\extra\httpd-vhosts.conf
 #add following 
 
@@ -42,16 +42,16 @@ Manual Domain Configuration for testing multitenancy
     CustomLog "logs/multitenant.local-access.log" common
 </VirtualHost>
 
-=================================================================================
+========================================================
 C:\Windows\System32\drivers\etc\
 edit hosts
 add this 
 127.0.0.1           multitenant.local
 127.0.0.1           app1.multitenant.local
 127.0.0.1           app2.multitenant.local
-=================================================================================
+========================================================
 
-
+Note :
 1. Login by Super admin to add tenant/company
 2. Login by Tenant Admin to add users on their own tenentdb.
 3. Users can be logged in to their tenant domain (ex : app1.multitenant.local)
