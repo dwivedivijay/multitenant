@@ -1,0 +1,58 @@
+#composer install
+
+#make changes in .env
+APP_URL=http://multitenant.local:8080
+MAIN_DOMAIN=multitenant.local
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=multitenant
+DB_USERNAME=root
+DB_PASSWORD=
+
+#php artisan migrate
+
+#php artisan db:seed --class=AdminSeeder
+admin Login :
+Email : superadmin@admin.com
+Pass : admin@1234
+
+=================================================================================
+Manual Domain Configuration for testing multitenancy
+=================================================================================
+#Edit D:\xampp\apache\conf\extra\httpd-vhosts.conf
+#add following 
+
+<VirtualHost *:8080>
+    ServerAdmin vijay@gmail.com
+    DocumentRoot "D:\xampp\htdocs\multitenancy\public"
+    #ServerName multitenant.local
+	ServerAlias *.multitenant.local
+    ErrorLog "logs/multitenant.local-error.log"
+    CustomLog "logs/multitenant.local-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8080>
+    ServerAdmin vijay@gmail.com
+    DocumentRoot "D:\xampp\htdocs\multitenancy\public"
+    ServerName multitenant.local
+	ServerAlias multitenant.local
+    ErrorLog "logs/multitenant.local-error.log"
+    CustomLog "logs/multitenant.local-access.log" common
+</VirtualHost>
+
+=================================================================================
+C:\Windows\System32\drivers\etc\
+edit hosts
+add this 
+127.0.0.1           multitenant.local
+127.0.0.1           app1.multitenant.local
+127.0.0.1           app2.multitenant.local
+=================================================================================
+
+
+1. Login by Super admin to add tenant/company
+2. Login by Tenant Admin to add users on their own tenentdb.
+3. Users can be logged in to their tenant domain (ex : app1.multitenant.local)
+

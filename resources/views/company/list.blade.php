@@ -19,6 +19,7 @@
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                     <tr>
                                         <th scope="col" class="px-3 py-1 text-left">Name</th>
+                                        <th scope="col" class="px-3 py-1 text-left">Email</th>
                                         <th scope="col" class="px-3 py-1 text-left">Domain</th>
                                         <th scope="col" class="px-3 py-1"></th>
                                     </tr>
@@ -28,6 +29,11 @@
                                         <tr class="bg-white border-b">
                                             <td class="px-3 py-1 font-medium text-gray-900 whitespace-nowrap">
                                                 {{ $company->id }}
+                                            </td>
+                                            <td class="px-3 py-1 font-medium text-gray-900 whitespace-nowrap">
+                                                @foreach ($company->users as $user)
+                                                    {{ $user->email }}
+                                                @endforeach
                                             </td>
                                             <td class="px-3 py-1 font-medium text-gray-900 whitespace-nowrap">
                                                 {{ $company->id.'.'.config('app.main_domain') }}

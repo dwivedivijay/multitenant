@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class AdminUserSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,8 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        $password = Helper::encryptPassMd5('admin@1234');
-        AdminLogin::create([
+        $password = Hash::make('admin@1234');
+        User::create([
             'name'=>'SuperAdmin',
             'email'=>'superadmin@admin.com',
             'password'=> $password,
